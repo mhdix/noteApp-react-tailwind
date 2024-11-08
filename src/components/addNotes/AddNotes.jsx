@@ -11,7 +11,7 @@ const AddNotes = ({ title, setTitle, desc, setDesc, note, setNote }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title.trim() && desc.trim()) {
-      setNote((is) => [...is, { id: uuidv4() , title, desc }]);
+      setNote((is) => [...is, { id: uuidv4() , title, desc , createAt: Date.now() }]);
     } else {
       alert("one item empty");
       inputRef.current.focus();
@@ -57,13 +57,6 @@ const AddNotes = ({ title, setTitle, desc, setDesc, note, setNote }) => {
         onClick={handleSubmit}
         className="border border-gray-400 bg-green-50 p-1 px-4 w-2/6"
       />
-
-      {note.map((item) => (
-        <div key={item.id}>
-          <p>{item.title}</p>
-          <p>{item.desc}</p>
-        </div>
-      ))}
     </form>
   );
 };
