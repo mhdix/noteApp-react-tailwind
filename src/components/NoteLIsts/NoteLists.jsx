@@ -2,9 +2,16 @@ import React from 'react'
 
 const NoteLists = () => {
   return (
-    <div className="">
+    <div className="flex flex-col gap-10">
+      <div>
+        <ul className='flex justify-around'>
+          <li>earliest</li>
+          <li>latest</li>
+          <li>all</li>
+        </ul>
+      </div>
       {/* note items */}
-      <div className="flex flex-col gap-4 w-full">
+      <div className="flex flex-col gap-4 w-full items-center">
         <NoteItems />
       </div>
     </div>
@@ -15,7 +22,7 @@ export default NoteLists
 
 function NoteItems () {
   return (
-      <div className="flex flex-col gap-4 px-4 py-3 border min-h-40 rounded-lg">
+      <div className="flex flex-col gap-4 px-4 py-3 border min-h-40 w-4/5 rounded-lg">
         {/* navbarNote */}
         <div className="flex justify-between">
           <h2 className="font-bold text-lg">note title</h2>
