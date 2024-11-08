@@ -1,9 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-const AddNotes = () => {
-  const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
-  const [note, setNote] = useState([]);
+const AddNotes = ({title, setTitle, desc, setDesc, note, setNote}) => {
   // select input in first load
   const inputRef = useRef();
   useEffect(() => {
@@ -13,7 +10,7 @@ const AddNotes = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title.trim() && desc.trim()) {
-      setNote((is) => [...is, { title, desc }]);
+      setNote((is) => [...is, { id:Date.now() , title, desc }]);
     } else {
       alert("one item empty");
       inputRef.current.focus();
@@ -21,6 +18,8 @@ const AddNotes = () => {
     setTitle("");
     setDesc("");
     console.log(note);
+    inputRef.current.focus();
+
   };
   const handleContent = (e) => {
     setDesc(e.target.value);
