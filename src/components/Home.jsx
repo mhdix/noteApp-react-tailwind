@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "./navbar/Navbar";
-import NoteLists from "./NoteLIsts/NoteLists";
+import NoteLists, { NoteItems } from "./NoteLIsts/NoteLists";
 import AddNotes from "./addNotes/AddNotes";
 
 const Home = () => {
@@ -31,7 +31,7 @@ const Home = () => {
       {/* noteList */}
       <div className="flex flex-col items-center col-span-4 col-start-4 relative">
         <h2 className="text-2xl mb-10 font-bold">Note list</h2>
-        <NoteLists note={note} />
+        {note.length ? <NoteLists note={note} /> : <p>no notes</p>}
       </div>
     </div>
   );

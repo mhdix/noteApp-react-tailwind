@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
+import { v4 as uuidv4 } from "uuid";
 
-const AddNotes = ({title, setTitle, desc, setDesc, note, setNote}) => {
+const AddNotes = ({ title, setTitle, desc, setDesc, note, setNote }) => {
   // select input in first load
   const inputRef = useRef();
   useEffect(() => {
@@ -10,7 +11,7 @@ const AddNotes = ({title, setTitle, desc, setDesc, note, setNote}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title.trim() && desc.trim()) {
-      setNote((is) => [...is, { id:Date.now() , title, desc }]);
+      setNote((is) => [...is, { id: uuidv4() , title, desc }]);
     } else {
       alert("one item empty");
       inputRef.current.focus();
@@ -19,7 +20,6 @@ const AddNotes = ({title, setTitle, desc, setDesc, note, setNote}) => {
     setDesc("");
     console.log(note);
     inputRef.current.focus();
-
   };
   const handleContent = (e) => {
     setDesc(e.target.value);
@@ -59,7 +59,7 @@ const AddNotes = ({title, setTitle, desc, setDesc, note, setNote}) => {
       />
 
       {note.map((item) => (
-        <div>
+        <div key={item.id}>
           <p>{item.title}</p>
           <p>{item.desc}</p>
         </div>
