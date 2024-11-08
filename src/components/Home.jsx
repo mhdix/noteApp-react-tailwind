@@ -16,7 +16,7 @@ const Home = () => {
       </div>
 
       {/* addNote */}
-      <div className="flex flex-col items-center col-span-3 justify-around">
+      <div className="flex flex-col items-center col-span-3 justify-around max-h-fit">
         <h2 className="text-2xl mb-10 font-bold">Add a Note</h2>
         <AddNotes
           title={title}
